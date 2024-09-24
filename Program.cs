@@ -1,4 +1,6 @@
 using GoogleAuthticationExample.Data;
+using GoogleAuthticationExample.Repositories.Implementaion;
+using GoogleAuthticationExample.Repositories.Interfance;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +24,7 @@ builder.Services.AddAuthentication(o =>
       googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
   });
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<ILoginGoogleService, LoginGoogleService>();
 
 var app = builder.Build();
 
