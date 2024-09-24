@@ -16,7 +16,7 @@ namespace GoogleAuthticationExample.Controllers
             this.loginGoogleService = loginGoogleService;
         } 
         [HttpPost]
-        public async Task<IActionResult> IndexAsync(string credential)
+        public async Task<IActionResult> Index(string credential)
         {
             GoogleJsonWebSignature.Payload payload = await GoogleJsonWebSignature.ValidateAsync(credential);
             if (payload == null)
