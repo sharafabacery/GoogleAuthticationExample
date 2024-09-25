@@ -1,21 +1,21 @@
 ﻿using Google.Apis.Auth;
 using GoogleAuthticationExample.Repositories.Interfance;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 
 namespace GoogleAuthticationExample.Controllers
 {
-    public class LoginGoogle : Controller
+    public class LoginGoogleController : Controller
     {
         private readonly ILoginGoogleService loginGoogleService;
 
        
-        public LoginGoogle(ILoginGoogleService loginGoogleService)
+        public LoginGoogleController(ILoginGoogleService loginGoogleService)
         {
             this.loginGoogleService = loginGoogleService;
         } 
-        [HttpPost]
         public async Task<IActionResult> Index(string credential)
         {
             GoogleJsonWebSignature.Payload payload = await GoogleJsonWebSignature.ValidateAsync(credential);
@@ -42,5 +42,7 @@ namespace GoogleAuthticationExample.Controllers
                 }
             }
         }
+       
+        
     }
 }

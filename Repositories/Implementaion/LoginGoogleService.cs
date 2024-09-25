@@ -1,4 +1,5 @@
 ﻿using GoogleAuthticationExample.Repositories.Interfance;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 
@@ -18,9 +19,11 @@ namespace GoogleAuthticationExample.Repositories.Implementaion
         {
             bool result = false;
             var userExists = await userManager.FindByEmailAsync(email);
-             if (userExists != null)
-             {
-                await signInManager.SignInAsync(userExists, false);
+            if (userExists != null)
+             { 
+               
+                await signInManager.SignInAsync(userExists,false);
+               
                 result = true;
              }
             return result;
